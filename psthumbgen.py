@@ -110,7 +110,7 @@ def create_thumbnails(source_path, dest_dir):
     try:
         if source_path.lower().endswith(raw_exts):
             with rawpy.imread(source_path) as raw:
-                rgb = raw.postprocess(use_camera_wb=True, no_auto_bright=True)
+                rgb = raw.postprocess(use_camera_wb=True, no_auto_bright=False, output_color=rawpy.ColorSpace.sRGB, output_bps=8)
             im = Image.fromarray(rgb) # Pillow image
         else:
             im = Image.open(source_path)
